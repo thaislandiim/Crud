@@ -1,0 +1,164 @@
+/* corpo e modal */
+* {
+    font-family: Helvetica;
+    /* zerar p elementos n virem com espaçamentos padrão do html*/
+    padding: 0;
+    margin: 0;
+    /*limitar os elementos as areas do border box*/
+    box-sizing: border-box;
+}
+
+body {
+    padding: 1rem;
+}
+
+h1 {
+    margin-bottom: 1rem;
+    background-color: rgb(143, 143, 143);
+    color: white;
+    text-align:center;
+    padding: 17px;
+    border-radius: 5px;
+}
+
+/* erro devido ao click em qlqr lugar da tela e abrir o modal 
+regra de css que sera aplicada nos botoes de abrir e fechar */
+#fade, 
+#modal {
+    /* tempo que a opacidade passara de 0 para 1 */
+    transition: 0.5s;
+    /* evento ira funcionar quando a opacidade dele estiver um */
+    opacity: 1;
+    pointer-events: all;
+}
+
+button {
+    padding: .9rem 1.2rem;
+    background-color: #787878;
+    color: white;
+    border: none;
+    border-radius: .25rem;
+    cursor: pointer;
+    opacity: 0.0rem;
+    font-size: 1rem;
+}
+
+#open-modal {
+    background-color: rgb(143, 143, 143);
+}
+
+button:hover {
+    opacity: 0.5;
+}
+
+/*fundo mais escuro com opacidade do modal*/
+#fade {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 5;
+}
+
+/*top, right, bottom, left*/
+#modal {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    /*transform utilizado p centralizar o modal | utilizadp p alterações como rotação, alteração, inclinação que precisam de um ponto especifico como parâmetro */
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    z-index: 10;
+    width: 500px;
+    max-width: 90%;
+    padding: 1.2rem;
+    border-radius: 0.5rem;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+}
+
+.modal-body p {
+    margin-bottom: 1rem;
+}
+
+/* esta ligado com evento la em cima de regra de modal e fade */
+/*aqui ele esta "escondendo" o modal | utilizando opacity pois é mais facil pra fazer a interação do modal de sumir e aparecer*/
+#modal.hide,
+#fade.hide {
+  opacity: 0;
+  /* aq n tem evento de click */
+  pointer-events: none;
+}
+
+#modal.hide {
+    top: 0;
+}
+/* 
+formulario e validacao */
+
+#modal-content {
+    border-radius: 5px;
+    box-shadow: black;
+}
+#name-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 0 auto;
+}
+
+label {
+    /* para grifar a letra */
+    font-weight: bold;
+}
+
+input,
+select,
+textarea {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.1rem;
+}
+
+#enviar-modal {
+    margin-top: 10px;
+    padding: 13px;
+}
+
+#customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+  
+#customers tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+  
+#customers tr:hover {
+    background-color: #ddd;
+}
+  
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+}

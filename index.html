@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<header>
+    <h1>CADASTRO DE CLIENTE</h1>
+</header>
+<table id="customers">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Cidade</th>
+            <th>Celular</th>
+            <th>Email</th>
+            <th>Ação</th>
+          </tr>
+    </thead>
+    <tbody class="dadosForm">
+    
+    </tbody>
+    <!-- <tr>
+        <td><button id="excluir">Excluir</button></td>
+        <td><button id="edit">Editar</button></td>
+    </tr> -->
+</table>
+<body>
+    <button id="open-modal">Cadastre aqui</button>
+    <!-- div que faz o conteudo do fundo ser exibido com opacidade e da foco no modal -->
+   <div id="fade" class="hide"></div> 
+   <!-- modal com suas divisoes e botao de fechar -->
+   <div id="modal" class="hide">
+        <div id="modal-content">
+            <div class="modal-header">
+                <h2>Este é o modal</h2>
+                <!-- o botão de fechar precisa ficar dentro do modal -->
+                <button id="close-modal">Fechar</button>
+            </div>
+            <div id="modal-body">
+                <form id="name-form" class="form">
+                    <input type="hidden" id="id" name="id">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required>
+    
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+    
+                    <label for="cidade">Cidade:</label>
+                    <input type="text" id="cidade" name="cidade" required>
+    
+                    <label for="celular">Celular:</label>
+                    <input type="text" id="celular" name="celular" required>
+    
+                    <button type="submit" id="submit-modal" class="submit-enviar" value="Enviar">Enviar</button>
+                </form>
+            </div>
+        </div>
+   </div>
+</body>
+<footer>
+    <script src="js/modal.js" defer></script>
+    <script src="js/crud.js" defer></script>
+</footer>
+</html>
