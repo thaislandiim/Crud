@@ -1,4 +1,6 @@
 const banco_chave = 'info'
+
+//obtem dados do banco
 const getBanco = () => {
     const banco_ls = localStorage.getItem(banco_chave)
     let banco = []
@@ -14,14 +16,13 @@ const addItem = (dados) => {
     const banco = getBanco()
     
     banco.push(dados)
-    console.log(banco)
 
     const n_banco = JSON.stringify(banco)
+    //setar: associo valor a algo
     localStorage.setItem(banco_chave, n_banco) 
 }
 
 const updateItem = (index, dados) => {
-    
     const banco = getBanco()
 
     banco[index] = dados
@@ -44,9 +45,12 @@ const inputs = {
 
 //escutar toda vez q ele for enviar o formulario
 meuForm.addEventListener("submit", function btnEnviaForm(event) {
+    //evitar o evento padrão - n quero que recarregue a pagina
     event.preventDefault();
 
+    //pego valores da input
     const usuarioDados = {
+        //chave: valor
         nome: inputs.nome.value,
         email: inputs.email.value,
         celular: inputs.celular.value,
@@ -60,27 +64,21 @@ meuForm.addEventListener("submit", function btnEnviaForm(event) {
         addItem(usuarioDados)
     }
 
+    //esvaziar os dados das inputs apos enviar
     for(let i in inputs){
         inputs[i].value = ''
     }
 
+    //regera a lista dos clientes
     listar()
 })
 
 const listar = () => {
-    let banco = getBanco()
+    const banco = getBanco()
 
     const tbody = document.querySelector('.dadosForm')
+    //esvazio o tbody p quando eu abrir n ter nada
     tbody.innerHTML = ''
-
-    //filtrar para trazer somente os dados que existem
-    banco = banco.filter(item => {
-        if (item == null){
-            return false
-        } else {
-            return true
-        }
-    })
 
     for (let index = 0; index < banco.length; index++) {
         const cliente = banco[index]
@@ -117,9 +115,11 @@ const listar = () => {
 const removeIten = (index) => {    
     const banco = getBanco()
 
+    //indice, e a quantidade de elementos q quero retirar
     banco.splice(index, 1);
 
     const n_banco = JSON.stringify(banco)
+    //setar: atribuir valor a algo
     localStorage.setItem(banco_chave, n_banco) 
 
     listar()
@@ -141,5 +141,5 @@ const editButton = (index) => {
     //abre o modal
     toggleModal()
 }
-//chamar novamente para quando atualizar a página não sumir
+//chamar para quando atualizar os dados adicionados aparecerem
 listar();
